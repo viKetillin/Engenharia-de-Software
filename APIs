@@ -1,0 +1,46 @@
+# O que são APIs - Interfaces de programação de aplicações
+
+APIs é uma interface de comunicação entre o usuário e um conjunto de serviços.
+
+## APIs mais comuns: 
+APIs web - Faz requisições HTTP, e devolve para o usuário o que ele precisa.
+APIs de código fonte - APIs que a linguagem de programação fornece, por exemplo uma API de data, que fornece o mês.
+
+## Padrões de API Web:
+RPC 
+Soap 
+REST
+
+## Boas práticas na modelagem de APIs REST
+
+1. Faça uso de recursos corretamente -> Use pronomes e não verbos
+                                     -> Não misture plural e singular
+
+2. Utilize sub-recursos -> Relacionamentos existentes devem estar explícitos na URL.
+Ex.: Retorna uma lista de motorista do carro 711 - GET /cars/711/drivers
+     Retorna o motorista 4 do carro 711 - GET /cars/711/drivers/4
+
+3. Entenda sobre idempotência - Caso a requisição for executada mais de uma vez, retornar o mesmo resultado. Uma exceção é nos métodos do tipo PATCH E POST.
+
+4. Não ignore os cabeçalhos HTTP
+
+5. Use HATEOAS (Hypermedia As The Engine Of Application State) - facilite a interação com a API, forneça links das operações permitidas. 
+
+6. API deve ser flexível - Deve ter filtro, ordenação, paginação e seleção de campos. 
+
+7. Versione a sua API
+
+8. Utilize os status HTTP corretamente 
+
+## O que é REST - Representational State Transfer
+
+O principio do REST é  usar o protocolo HTTP para a comunicação entre o cliente (requer recursos) -> servidor (fornece recursos).
+
+STATELESSNESS - O servidor não deve guardar dados de conexões ativos de clientes. Uma forma de implementar um login com REST, é com JWT.
+
+Interface uniforme é uma linguagem comum entre clientes e servidores - Defende que os recursos devem ser identificáveis. 
+
+Manipulação de recursos devem ser feitas através de representações - por exemplo com JSON, XML, texto, etc.
+
+Utilizar Hypermedia
+
