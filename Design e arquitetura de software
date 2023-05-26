@@ -1,0 +1,66 @@
+# Design e arquitetura de software
+Arquitetura de software é uma visão de alto nível de como será modelado o sistema, organização de pastas e camadas da aplicação.
+Design de software é uma visão de baixo nível. Como escrever cada classe, quais padrões aplicar, em resumo é o design do código.
+
+## Arquitetura hexagonal - Ports and Adapters
+1. Definir quais componentes criar;
+2. Como os componentes serão organizados;
+
+A ideia desse padrão de arquitetura é isolar a regra de negócio (domínio), a comunicação não relacionada ao domínio ficará externo.
+
+## Domain-Driven Design (DDD)
+
+Defende que o código precisa refletir a realidade do negócio (domínio).
+
+### Padrões estratégicos 
+
+Linguagem ubíqua (linguagem onipresente) - Ex.: Um aluno não deve ser representado pela classe cliente.
+Contextos delimitados - Trata de separar conceitos. Ex.: Seperar um contexto financeiro de um contexto acadêmico por exemplo.
+Domínio e subdomínio - É importante que uma plataforma tenha um domínio e um subdomínio. Pois, por exemplo, no contexto de uma plataforma de cursos, se existir um domínio da parte principal, que seria a parte acadêmica, caso o subdomínio, por exemplo de um sistema de pontos, sair fora do ar, não tem tanto problema, quanto cair todo o sistema.
+
+### Padrões táticos (blocos de construção)
+
+Entidades
+Repositórios
+Eventos
+Módulos 
+Serviços
+
+## Mensageria
+
+Defende a comunicação entre sistema de forma assíncrona, ou seja desacoplar serviços. 
+Existe o publisher, que é quem vai enviar a "mensagem" -> message broker, que é o responsável pelo envio da mensagem -> subscriber, que é quem vai receber a "mensagem"
+
+## Modelagem de eventos
+
+### Fases
+
+1. Brainstorming - Explicar o projeto através de eventos, só é necessário eventos que alteram o estado da aplicação. Ex.: No contexto de um hotel, se a pessoa olhar a disponibilidade de um quarto não altera a disponibilidade do quarto. Nesse caso esse evento é removido. No final existe uma pilha de eventos não organizados.
+Tanto a equipe técnica como a equipe não técnica pode participar desse brainstorming.
+
+2. Ordenação lógica (the plot) - Organizar os eventos, em uma linha do tempo, em uma ordem que faça sentido.
+
+3. Storyboard - Criar interfaces, por exemplo com figma, de como os eventos irão acontecer.
+
+4. Identificando entradas - Identifica o que é necessário para um evento ser concluído. Por exemplo, quais dados precisam para fazer um checkin em um hotel.
+
+5. Identificando saídas - Identifica o que irá acontecer após o evento ser concluído. Por exemplo, quando a pessoa reservar um quarto, aquele quarto precisa estar indisponível.
+
+6. Lei de conway - Defende que é necessário a estrutura do sistema seguir a estrutura da empresa. Separar eventos de forma lógica, como por exemplo por departamento.
+
+7. Elaboração de cenários - Decide como elaborar os cenários, se vai precisar de entradas, como irá pegar as entradas, etc.
+
+Supostas vantagens: Quando adiciona novas funcionalidades, a complexidade não é aumentada. Pois uma área, não afeta outra.
+
+## Arquitetura orientada a eventos (Event-driven Architecture)
+
+Defende o desaclopamento de serviços. Consegue lidar melhor com falhas.
+Desvantagem: Sistema mais complexo.
+Vantagens: 
+1. Escabilidade horizontal - armazenamento de dados - servidores
+2. Escabilidade vertical - Hardware - adiciona memória por exemplo
+3. Em profundidade 
+
+## Event sourcing 
+
+Toda mundança de estado gera um novo evento, ao invés de dar update, gera um novo evento. Facilita encontrar problemas gerados.
